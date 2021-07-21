@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One-step SSH to server &#8212; TU Delft DCC guides</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "TU-Delft-DCC/TU-Delft-DCC.github.io.git");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Research data guides" href="../02_Data/00_README.html" />
+    <link rel="prev" title="Request a Virtual Private Server" href="03_VPS_request.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TU Delft DCC guides</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Welcome.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01_README.html">
+   Research computing guides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_Getting_started.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_VPS_request.html">
+     Request a Virtual Private Server
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     One-step SSH to server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02_Data/00_README.html">
+   Research data guides
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_Data/01_Intro/README.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_Data/02_Data_Management_Planning/README.html">
+     Data management planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_Data/03_Storage/01_Sync_Unison.html">
+     Sync with Unison
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_Software/00_README.html">
+   Research software guides
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_Software/01_Intro/0_README.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../03_Software/02_Project_Setup/0_Project_Setup.html">
+     Software Management
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03_Software/02_Project_Setup/01_ApacheWebServer.html">
+       Deploy Apache Web Server
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../03_Software/03_Code_quality/01_CI_GitLab_Docker.html">
+     Continuous Integration with GitLab runner
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03_Software/03_Code_quality/README.html">
+       Code Quality
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_Software/04_Documentation/README.html">
+     Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_Software/05_Reproducibility/README.html">
+     Accessibility &amp; Reproducibility
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_About/04_About_DCC.html">
+   Getting support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_Trainings/05_Trainings.html">
+   Trainings and events
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/01_Infrastructure /04_VPS_SSHconnect.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="git@github.com:TU-Delft-DCC/TU-Delft-DCC.github.io.git"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/git@github.com:TU-Delft-DCC/TU-Delft-DCC.github.io.git/edit/master/01_Infrastructure /04_VPS_SSHconnect.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-this-documentation-will-help-achieve">
+   What this documentation will help achieve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tools-software">
+   Tools/Software
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps">
+   Steps
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-enter-the-ssh-directory-on-your-local-machine">
+     Step 1: Enter the .ssh directory on your local machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-edit-local-ssh-config-file">
+     Step 2. Edit local
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ~/.ssh/config
+      </span>
+     </code>
+     file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-check-that-your-local-machines-known-hosts-file-contains-the-ssh-key-for-the-tu-bastion-ex-host">
+     Step 3. Check that your local machine’s
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       known_hosts
+      </span>
+     </code>
+     file contains the SSH key for the tu-bastion-ex host
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-generate-ssh-key-pair-to-store-on-local-machine">
+     Step 4. Generate SSH key pair to store on local machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-copy-your-public-ssh-key-from-your-local-machine-to-the-bastion-host-tu-bastion-ex">
+     Step 5. Copy your public SSH key from your local machine to the Bastion host (tu-bastion-ex)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-6-ssh-to-the-bastion-host-and-check-that-your-public-key-has-been-successfully-copied">
+     Step 6. SSH to the Bastion host and check that your public key has been successfully copied
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-copy-contents-of-your-public-ssh-key-from-your-local-machine">
+     Step 7. Copy contents of your public SSH key from your local machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-8-ssh-from-your-local-machine-to-the-bastion-host-and-then-to-your-vps-using-its-domain-name">
+     Step 8. SSH from your local machine to the Bastion host and then to your VPS using its domain name
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-9-paste-contents-of-public-ssh-key-at-the-end-of-the-authorized-keys-file-on-the-vps">
+     Step 9. Paste contents of public SSH key at the end of the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       authorized_keys
+      </span>
+     </code>
+     file on the VPS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-10-ssh-into-your-vps-directly-from-your-local-machine-using-its-alias">
+     Step 10. SSH into your VPS directly from your local machine using its alias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows-using-putty">
+   Windows using PuTTY
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="one-step-ssh-to-server">
+<h1>One-step SSH to server<a class="headerlink" href="#one-step-ssh-to-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>The default login procedure to VPS from TU Delft is to connect to the Bastion host (an intermediary server) and then to your server, so it is a two-step process.  Steps A and B are described by ICT admin in the email confirming deployment of your server.</p>
+<p>Configuring a one-step SSH connection to a VPS (Virtual Private Server) from your local machine simplifies the process of accessing the VPS considerably and allows for secure transfer of files to and from the virtual and local environments.</p>
+<p>The directions below are written for Linux and Mac users. Windows users can configure a VPS connection via SSH using a third-party SSH client like <a class="reference external" href="https://www.putty.org/">PuTTY</a>. We are in the process of drafting documentation for this, its current state is at the bottom of this page.</p>
+</div>
+<div class="section" id="what-this-documentation-will-help-achieve">
+<h2>What this documentation will help achieve<a class="headerlink" href="#what-this-documentation-will-help-achieve" title="Permalink to this headline">¶</a></h2>
+<p>This guide explains how to configure a one-step connection to a VPS from your local machine through the Bastion host managed by TU Delft.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>TU Delft netID</p></li>
+<li><p>VPS provided by TU Delft ICT</p></li>
+<li><p>Mac or Linux OS (Windows users, please see the end of this page for instructions on using a client program to establish a direct SSH connection)</p></li>
+</ul>
+</div>
+<div class="section" id="tools-software">
+<h2>Tools/Software<a class="headerlink" href="#tools-software" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If using Windows, PuTTY or cygwin (see bottom of page)</p></li>
+</ul>
+</div>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> directory on your local machine</p></li>
+<li><p>Edit local <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file</p></li>
+<li><p>Check that your local machine’s <code class="docutils literal notranslate"><span class="pre">known_hosts</span></code> file contains the SSH key for the tu-bastion-ex host</p></li>
+<li><p>Generate SSH key pair to store on local machine (if you already have an SSH key pair from another application, you can use this existing one)</p></li>
+<li><p>Copy your public SSH key from your local machine to the Bastion host (tu-bastion-ex)</p></li>
+<li><p>SSH to the Bastion host and check that your public key has been successfully copied</p></li>
+<li><p>Copy contents of your public SSH key from your local machine</p></li>
+<li><p>SSH from your local machine to the Bastion host and then to your VPS using its domain name</p></li>
+<li><p>Paste contents of public SSH key at the end of the <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file on the VPS</p></li>
+<li><p>SSH into your VPS directly from your local machine using its alias</p></li>
+</ol>
+<div class="section" id="step-1-enter-the-ssh-directory-on-your-local-machine">
+<h3>Step 1: Enter the .ssh directory on your local machine<a class="headerlink" href="#step-1-enter-the-ssh-directory-on-your-local-machine" title="Permalink to this headline">¶</a></h3>
+<p>Open your terminal (click on the magnifying glass in the upper right toolbar and search “terminal”) and enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="nd">@localmachine</span> <span class="o">~</span> <span class="o">%</span> <span class="n">cd</span> <span class="o">.</span><span class="n">ssh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-edit-local-ssh-config-file">
+<h3>Step 2. Edit local <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file<a class="headerlink" href="#step-2-edit-local-ssh-config-file" title="Permalink to this headline">¶</a></h3>
+<p>Use the in-terminal text editor vi to open and edit the ssh config file according your server details. In your terminal, type:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">vi</span> <span class="pre">config</span></code></p>
+<p>And hit Enter. Customise fields by first hitting “i” to enter insert mode. You can choose any short term as the alias for your server, which will be used to access it via SSH after configuration. <em>Note:</em> Make sure to remove &lt;&gt; from all fields below. When you are finished, hit “escape” and then type <code class="docutils literal notranslate"><span class="pre">:wq</span></code> to save the file and quit the vi editor.</p>
+<p>The file will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">tu</span><span class="o">-</span><span class="n">bastion</span><span class="o">-</span><span class="n">ex</span>
+    <span class="n">HostName</span> <span class="n">linux</span><span class="o">-</span><span class="n">bastion</span><span class="o">-</span><span class="n">ex</span><span class="o">.</span><span class="n">tudelft</span><span class="o">.</span><span class="n">nl</span>
+    <span class="n">User</span> <span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span>
+
+<span class="n">Host</span> <span class="o">&lt;</span><span class="n">server</span> <span class="n">alias</span><span class="o">&gt;</span>
+    <span class="c1"># comment about server</span>
+    <span class="n">HostName</span> <span class="o">&lt;</span><span class="n">server</span> <span class="n">name</span><span class="o">&gt;</span>
+    <span class="n">User</span> <span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span>
+    <span class="n">ProxyCommand</span> <span class="n">ssh</span> <span class="n">tu</span><span class="o">-</span><span class="n">bastion</span><span class="o">-</span><span class="n">ex</span> <span class="n">nc</span> <span class="o">%</span><span class="n">h</span> <span class="o">%</span><span class="n">p</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-check-that-your-local-machines-known-hosts-file-contains-the-ssh-key-for-the-tu-bastion-ex-host">
+<h3>Step 3. Check that your local machine’s <code class="docutils literal notranslate"><span class="pre">known_hosts</span></code> file contains the SSH key for the tu-bastion-ex host<a class="headerlink" href="#step-3-check-that-your-local-machines-known-hosts-file-contains-the-ssh-key-for-the-tu-bastion-ex-host" title="Permalink to this headline">¶</a></h3>
+<p>Back in your .ssh folder, use the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command to display the contents of the known_hosts file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">cat</span> <span class="pre">known_hosts</span></code></p>
+<p>The output will look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">linux</span><span class="o">-</span><span class="n">bastion</span><span class="o">-</span><span class="n">ex</span><span class="o">.</span><span class="n">tudelft</span><span class="o">.</span><span class="n">nl</span><span class="p">,</span><span class="mf">131.180.123.197</span> <span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">ssh</span> <span class="n">key</span> <span class="o">-</span> <span class="n">this</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">numbers</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">your</span> <span class="n">email</span> <span class="n">address</span><span class="o">.&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-generate-ssh-key-pair-to-store-on-local-machine">
+<h3>Step 4. Generate SSH key pair to store on local machine<a class="headerlink" href="#step-4-generate-ssh-key-pair-to-store-on-local-machine" title="Permalink to this headline">¶</a></h3>
+<p><em>Note:</em> if you already have an SSH key pair from another application, you can use this existing one</p>
+<p>In your .ssh folder, type the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span> <span class="pre">-C</span> <span class="pre">&lt;youremailaddress&#64;tudelft.nl&gt;</span></code></p>
+<p>You will see output in your terminal that looks like the text below. It will ask for your input in certain fields, including a filename (here we use id_rsa) and passphrase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Generating</span> <span class="n">public</span><span class="o">/</span><span class="n">private</span> <span class="n">rsa</span> <span class="n">key</span> <span class="n">pair</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">to</span> <span class="n">save</span> <span class="n">the</span> <span class="n">key</span> <span class="p">(</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">):</span> 
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="p">(</span><span class="n">empty</span> <span class="k">for</span> <span class="n">no</span> <span class="n">passphrase</span><span class="p">):</span> 
+<span class="n">Enter</span> <span class="n">same</span> <span class="n">passphrase</span> <span class="n">again</span><span class="p">:</span> 
+<span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="ow">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span>
+<span class="n">Your</span> <span class="n">public</span> <span class="n">key</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="ow">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">SHA256</span><span class="p">:</span><span class="n">d90YAdXNXA5x8eolImyTF6B1ajUarxuv94a</span><span class="o">+</span><span class="mi">4</span><span class="n">zbc0</span> <span class="n">youremailaddress</span><span class="nd">@tudelft</span><span class="o">.</span><span class="n">nl</span>
+</pre></div>
+</div>
+<p>Check to see that the SSH key files are stored on your local machine using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command in the .ssh folder.</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">ls</span></code></p>
+</div>
+<div class="section" id="step-5-copy-your-public-ssh-key-from-your-local-machine-to-the-bastion-host-tu-bastion-ex">
+<h3>Step 5. Copy your public SSH key from your local machine to the Bastion host (tu-bastion-ex)<a class="headerlink" href="#step-5-copy-your-public-ssh-key-from-your-local-machine-to-the-bastion-host-tu-bastion-ex" title="Permalink to this headline">¶</a></h3>
+<p>In the .ssh folder of your local machine, type the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">ssh-copy-id</span> <span class="pre">tu-bastion-ex</span></code></p>
+<p>You will see output that looks like the following. Fill in your password for the Bastion host (provided by ICT) when prompted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: “/Users/username/.ssh/id_rsa.pub”
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed —— if you are prompted now it is to install the new keys
+username@linux-bastion-ex.tudelft.nl’s password: 
+
+Number of key(s) added:        1
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-6-ssh-to-the-bastion-host-and-check-that-your-public-key-has-been-successfully-copied">
+<h3>Step 6. SSH to the Bastion host and check that your public key has been successfully copied<a class="headerlink" href="#step-6-ssh-to-the-bastion-host-and-check-that-your-public-key-has-been-successfully-copied" title="Permalink to this headline">¶</a></h3>
+<p>SSH to the Bastion host:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">ssh</span> <span class="pre">tu-bastion-ex</span></code></p>
+<p>Move into the .ssh directory on the Bastion host and list the files there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@bastionhost ~]$ cd .ssh
+[username@bastionhost .ssh]$ ls
+
+authorized_keys  config  id_rsa.username  id_rsa.username.pub  known_hosts
+</pre></div>
+</div>
+<p>Check that the <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file contains your SSH key copied from your local machine using the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@bastionhost .ssh]$ cat authorized_keys
+ssh-rsa &lt;your ssh key ending in youremailaddress@tudelft.nl&gt;
+</pre></div>
+</div>
+<p>Exit the Bastion host:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@bastionhost .ssh]$ exit
+Connection to linux-bastion-ex.tudelft.nl closed.
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-7-copy-contents-of-your-public-ssh-key-from-your-local-machine">
+<h3>Step 7. Copy contents of your public SSH key from your local machine<a class="headerlink" href="#step-7-copy-contents-of-your-public-ssh-key-from-your-local-machine" title="Permalink to this headline">¶</a></h3>
+<p>Navigate to the .ssh folder on your local machine. Use the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command to display the contents of id_rsa.pub (your public SSH key). Copy this SSH key and store in a notepad temporarily - the SSH key includes everything from ssh-rsa to your email address.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="nd">@localmachine</span> <span class="o">.</span><span class="n">ssh</span> <span class="o">%</span> <span class="n">cat</span> <span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span>
+
+<span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">ssh</span> <span class="n">key</span> <span class="n">ending</span> <span class="ow">in</span> <span class="n">youremailaddress</span><span class="nd">@tudelft</span><span class="o">.</span><span class="n">nl</span><span class="o">&gt;</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-8-ssh-from-your-local-machine-to-the-bastion-host-and-then-to-your-vps-using-its-domain-name">
+<h3>Step 8. SSH from your local machine to the Bastion host and then to your VPS using its domain name<a class="headerlink" href="#step-8-ssh-from-your-local-machine-to-the-bastion-host-and-then-to-your-vps-using-its-domain-name" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>username@localmachine .ssh % ssh tu-bastion-ex 
+[username@bastionhost ~]$ ssh externalserver.nl
+Welcome to Ubuntu 20.04.1 LTS (GNU/Linux 5.4.0-42-generic x86_64)
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-9-paste-contents-of-public-ssh-key-at-the-end-of-the-authorized-keys-file-on-the-vps">
+<h3>Step 9. Paste contents of public SSH key at the end of the <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file on the VPS<a class="headerlink" href="#step-9-paste-contents-of-public-ssh-key-at-the-end-of-the-authorized-keys-file-on-the-vps" title="Permalink to this headline">¶</a></h3>
+<p>Move into the .ssh folder on your VPS:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;externalserver:</span> <span class="pre">~</span> <span class="pre">$</span> <span class="pre">cd</span> <span class="pre">.ssh</span></code></p>
+<p>Open the authorized_keys file using vi:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;externalserver:</span> <span class="pre">~/.ssh</span> <span class="pre">$</span> <span class="pre">vi</span> <span class="pre">authorized_keys</span></code></p>
+<p>Paste the contents of your public SSH key copied from your local machine at the end of the file by hitting “o” and ctrl+V.</p>
+<p>Exit first the VPS:</p>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;externalserver:</span> <span class="pre">~/.ssh</span> <span class="pre">$</span> <span class="pre">exit</span></code></p>
+<p>and then the Bastion host</p>
+<p><code class="docutils literal notranslate"><span class="pre">[username&#64;bastionhost</span> <span class="pre">~]$</span> <span class="pre">exit</span></code></p>
+</div>
+<div class="section" id="step-10-ssh-into-your-vps-directly-from-your-local-machine-using-its-alias">
+<h3>Step 10. SSH into your VPS directly from your local machine using its alias<a class="headerlink" href="#step-10-ssh-into-your-vps-directly-from-your-local-machine-using-its-alias" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">username&#64;localmachine</span> <span class="pre">.ssh</span> <span class="pre">%</span> <span class="pre">ssh</span> <span class="pre">&lt;serveralias&gt;</span></code></p>
+</div>
+</div>
+<div class="section" id="windows-using-putty">
+<h2>Windows using PuTTY<a class="headerlink" href="#windows-using-putty" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Open Putty</p></li>
+<li><p>Paste &lt;net_id&gt;&#64;linux-bastion-ex.tudelft.nl in the Host name field. An intermediary terminal appears</p></li>
+<li><p>Enter your netID password (it will give you the prompt)</p></li>
+<li><p>Write ssh followed by the full domain name of your server, for example <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">mgmt-server-lib.tudelft.nl</span></code></p></li>
+<li><p>Congrats! You are in your server</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01_Infrastructure "
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="03_VPS_request.html" title="previous page">Request a Virtual Private Server</a>
+    <a class='right-next' id="next-link" href="../02_Data/00_README.html" title="next page">Research data guides</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By TU Delft DCC<br/>
+        
+          <div class="extra_footer">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
